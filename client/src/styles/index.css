@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background: white;
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.container-luxury {
+  max-width: 1400px;
+  margin: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.nav-link {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.btn-outline {
+  border: 1px solid black;
+  padding: 12px 24px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
