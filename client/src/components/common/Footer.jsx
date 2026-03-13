@@ -3,33 +3,29 @@ import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiArrowRight } from "rea
 
 function Footer() {
     return (
-        <footer className="bg-[#e4e4e4] pt-12 pb-20 mt-auto">
+        <footer className="bg-[#e4e4e4] pt-12 pb-10 mt-auto border-t border-gray-200">
             <div className="container-luxury max-w-[1240px] flex flex-col md:flex-row justify-between gap-8 mb-16 px-4">
 
                 {/* Columns */}
                 <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
                     <div>
                         <h4 className="font-bold mb-4 text-[#222]">SHOP</h4>
                         <ul className="flex flex-col gap-3 text-[13px] text-[#222]">
-                            <li><Link className="hover:underline">Women</Link></li>
-                            <li><Link className="hover:underline">Men</Link></li>
-                            <li><Link className="hover:underline">Baby</Link></li>
-                            <li><Link className="hover:underline">Kids</Link></li>
-                            <li><Link className="hover:underline">Orchestyle HOME</Link></li>
-                            <li><Link className="hover:underline">Beauty</Link></li>
-                            <li><Link className="hover:underline">Student Discount</Link></li>
+                            <li><Link to="/shop?category=Women" className="hover:underline">Women</Link></li>
+                            <li><Link to="/shop?category=Men" className="hover:underline">Men</Link></li>
+                            <li><Link to="/shop?category=Accessories" className="hover:underline">Accessories</Link></li>
+                            <li><Link to="/shop" className="hover:underline">All Products</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-bold mb-4 text-[#222]">CORPORATE INFO</h4>
+                        <h4 className="font-bold mb-4 text-[#222]">ABOUT</h4>
                         <ul className="flex flex-col gap-3 text-[13px] text-[#222]">
-                            <li><Link className="hover:underline">Career at Orchestyle</Link></li>
-                            <li><Link className="hover:underline">About Orchestyle group</Link></li>
+                            <li><Link className="hover:underline">About Orchestyle</Link></li>
                             <li><Link className="hover:underline">Sustainability</Link></li>
+                            <li><Link className="hover:underline">Careers</Link></li>
                             <li><Link className="hover:underline">Press</Link></li>
-                            <li><Link className="hover:underline">Investor Relations</Link></li>
-                            <li><Link className="hover:underline">Corporate Governance</Link></li>
                         </ul>
                     </div>
 
@@ -37,24 +33,25 @@ function Footer() {
                         <h4 className="font-bold mb-4 text-[#222]">HELP</h4>
                         <ul className="flex flex-col gap-3 text-[13px] text-[#222]">
                             <li><Link className="hover:underline">Customer Service</Link></li>
-                            <li><Link className="hover:underline">My Account</Link></li>
+                            <li><Link to="/account" className="hover:underline">My Account</Link></li>
                             <li><Link className="hover:underline">Find a Store</Link></li>
                             <li><Link className="hover:underline">Legal & Privacy</Link></li>
                             <li><Link className="hover:underline">Contact</Link></li>
-                            <li><Link className="hover:underline">Gift Card</Link></li>
                         </ul>
                     </div>
                 </div>
 
                 {/* Newsletter & Socials */}
-                <div className="w-full md:w-[350px]">
-                    <h4 className="font-bold mb-4 text-[#222]">BECOME A MEMBER</h4>
-                    <p className="text-[13px] mb-4 text-[#222] leading-relaxed">
-                        Join now and get 10% off your next purchase!
+                <div className="w-full md:w-[350px] flex flex-col pt-4 md:pt-0 border-t md:border-t-0 border-gray-300 md:border-l md:pl-8">
+
+                    <h4 className="font-bold mb-4 text-[#222]">JOIN OUR NEWSLETTER</h4>
+                    <p className="text-[13px] text-[#222] mb-4">
+                        Become a member and get 10% off your first purchase!
                     </p>
-                    <Link className="inline-flex items-center text-[13px] font-bold hover:text-hm-red transition-colors mb-8 group">
-                        READ MORE <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    <div className="flex mb-6 border-b border-[#222] pb-1">
+                        <input type="email" placeholder="Your email address" className="w-full bg-transparent outline-none text-[13px]" />
+                        <button><FiArrowRight /></button>
+                    </div>
 
                     <div className="flex gap-6 text-[22px] text-[#222]">
                         <a href="#" className="hover:text-hm-red transition-colors"><FiInstagram /></a>
@@ -65,7 +62,7 @@ function Footer() {
                 </div>
             </div>
 
-            <div className="container-luxury text-center px-4">
+            <div className="container-luxury text-center px-4 border-t border-gray-300 pt-8">
                 <p className="text-[11px] text-[#444] leading-relaxed max-w-xl mx-auto mb-6">
                     The content of this site is copyright-protected and is the property of Orchestyle OS. Orchestyle's business concept is to offer fashion and quality at the best price in a sustainable way.
                 </p>

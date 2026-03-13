@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
 import { FiHeart } from "react-icons/fi"
+import { mockTrending } from "../../utils/mockData"
 
 function Trending() {
-    const products = [
-        { id: 1, title: "Amethyst Bracelet", subtitle: "Handcrafted", price: "₦15,000", image: "https://images.unsplash.com/photo-1599643477874-11884e8aae2f?q=80&w=1964&auto=format&fit=crop" },
-        { id: 2, title: "Gold Plated Anklet", subtitle: "Premium Quality", price: "₦8,500", image: "https://images.unsplash.com/photo-1515562141207-7a8efbac34bc?q=80&w=2073&auto=format&fit=crop" },
-        { id: 3, title: "Rose Quartz Beads", subtitle: "Natural Stone", price: "₦12,000", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?q=80&w=1964&auto=format&fit=crop" },
-        { id: 4, title: "Tiger Eye Necklace", subtitle: "Adjustable", price: "₦22,000", image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=2070&auto=format&fit=crop" },
-    ]
+    const products = mockTrending.map(p => ({
+        id: p.id,
+        title: p.name,
+        subtitle: p.category,
+        price: `₦${p.price.toLocaleString()}`,
+        image: p.images[0]
+    }));
 
     return (
         <section className="px-4 md:px-6 mb-16">

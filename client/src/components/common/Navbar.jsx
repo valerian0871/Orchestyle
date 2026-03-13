@@ -1,9 +1,23 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FiSearch, FiHeart, FiShoppingBag, FiUser } from "react-icons/fi"
+import { useCart } from "../../hooks/useCart"
+import { useWishlist } from "../../hooks/useWishlist"
+import { useAuth } from "../../hooks/useAuth"
 
 function Navbar() {
     const [isSearchOpen, setIsSearchOpen] = useState(false)
+    const { cartCount } = useCart();
+    const { wishlistItems } = useWishlist();
+    const { user } = useAuth();
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            navigate(`/shop?search=${e.target.value}`);
+            setIsSearchOpen(false);
+        }
+    }
 
     return (
         <header className="w-full bg-white sticky top-0 z-50 shadow-sm">
@@ -23,12 +37,12 @@ function Navbar() {
 
                     {/* Center-Left: Main Navigation Categories (All Caps) */}
                     <nav className="flex gap-x-6 text-[12px] font-medium tracking-widest text-[#222]">
-                        <Link className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">BRACELETS</Link>
-                        <Link className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">NECKPIECES</Link>
-                        <Link className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">BAGS</Link>
-                        <Link className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">WAISTBEADS</Link>
-                        <Link className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">ANKLETS</Link>
-                        <Link className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">EARRINGS</Link>
+                        <Link to="/shop?category=Bracelets" className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">BRACELETS</Link>
+                        <Link to="/shop?category=Neckpieces" className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">NECKPIECES</Link>
+                        <Link to="/shop?category=Bags" className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">BAGS</Link>
+                        <Link to="/shop?category=Waistbeads" className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">WAISTBEADS</Link>
+                        <Link to="/shop?category=Anklets" className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">ANKLETS</Link>
+                        <Link to="/shop?category=Earrings" className="hover:text-[#C19B4C] hover:underline underline-offset-4 uppercase">EARRINGS</Link>
                     </nav>
 
                 </div>
@@ -42,6 +56,7 @@ function Navbar() {
                             <input
                                 type="text"
                                 placeholder="Search products"
+                                onKeyDown={handleSearch}
                                 className="w-[180px] border-b border-[#222] outline-none pb-1 pr-6 text-[13px] bg-transparent text-[#666] mr-2 transition-all duration-300 animate-fade-in"
                                 autoFocus
                             />
@@ -52,16 +67,25 @@ function Navbar() {
                         />
                     </div>
 
-                    <div className="flex items-center hover:text-[#C19B4C] cursor-pointer transition-colors">
+                    <Link to={user ? "/account" : "/login"} className="flex items-center hover:text-[#C19B4C] cursor-pointer transition-colors">
                         <FiUser className="text-[20px] ml-4" />
-                    </div>
-                    <div className="flex items-center hover:text-[#C19B4C] cursor-pointer transition-colors">
+                    </Link>
+                    <Link to="/wishlist" className="flex items-center hover:text-[#C19B4C] cursor-pointer transition-colors relative">
                         <FiHeart className="text-[20px]" />
-                    </div>
-                    <div className="flex justify-center items-center hover:text-[#C19B4C] cursor-pointer transition-colors relative">
+                        {wishlistItems.length > 0 && (
+                            <span className="absolute -bottom-[6px] -right-[6px] bg-hm-red text-white text-[10px] w-[14px] h-[14px] rounded-full flex items-center justify-center font-bold">
+                                {wishlistItems.length}
+                            </span>
+                        )}
+                    </Link>
+                    <Link to="/cart" className="flex justify-center items-center hover:text-[#C19B4C] cursor-pointer transition-colors relative">
                         <FiShoppingBag className="text-[20px]" />
-                        <span className="absolute -bottom-[6px] -right-[6px] bg-[#222] text-[#e0a96d] text-[10px] w-[14px] h-[14px] rounded-full flex items-center justify-center font-bold">0</span>
-                    </div>
+                        {cartCount > 0 && (
+                            <span className="absolute -bottom-[6px] -right-[6px] bg-[#222] text-[#e0a96d] text-[10px] w-[14px] h-[14px] rounded-full flex items-center justify-center font-bold">
+                                {cartCount}
+                            </span>
+                        )}
+                    </Link>
                 </div>
 
             </div>
@@ -78,9 +102,23 @@ function Navbar() {
                 </Link>
 
                 <div className="flex gap-4">
-                    <FiUser className="text-xl hidden sm:block" />
-                    <FiHeart className="text-xl" />
-                    <FiShoppingBag className="text-xl" />
+                    <Link to={user ? "/account" : "/login"}><FiUser className="text-xl hidden sm:block" /></Link>
+                    <Link to="/wishlist" className="relative">
+                        <FiHeart className="text-xl" />
+                        {wishlistItems.length > 0 && (
+                            <span className="absolute -bottom-[4px] -right-[4px] bg-hm-red text-white text-[9px] w-[12px] h-[12px] rounded-full flex items-center justify-center font-bold">
+                                {wishlistItems.length}
+                            </span>
+                        )}
+                    </Link>
+                    <Link to="/cart" className="relative">
+                        <FiShoppingBag className="text-xl" />
+                        {cartCount > 0 && (
+                            <span className="absolute -bottom-[4px] -right-[4px] bg-[#222] text-[#e0a96d] text-[9px] w-[12px] h-[12px] rounded-full flex items-center justify-center font-bold">
+                                {cartCount}
+                            </span>
+                        )}
+                    </Link>
                 </div>
             </div>
             {/* Mobile Search Input Overlay (Conditional) */}
@@ -89,6 +127,7 @@ function Navbar() {
                     <input
                         type="text"
                         placeholder="Search products..."
+                        onKeyDown={handleSearch}
                         className="w-full max-w-sm border-b border-[#222] outline-none pb-1 bg-transparent text-sm focus:border-[#C19B4C]"
                         autoFocus
                     />
