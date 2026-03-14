@@ -6,9 +6,9 @@ function About() {
         <div className="bg-[#f8f8f8] min-h-screen">
             {/* Hero Image Section */}
             <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden">
-                <img 
-                    src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=2080&auto=format&fit=crop" 
-                    alt="Craftsmanship" 
+                <img
+                    src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=2080&auto=format&fit=crop"
+                    alt="Craftsmanship"
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -32,9 +32,9 @@ function About() {
             {/* Split Image/Text Section */}
             <div className="flex flex-col md:flex-row mb-16 md:mb-24">
                 <div className="flex-1 min-h-[400px]">
-                    <img 
-                        src="https://images.unsplash.com/photo-1599643477874-11884e8aae2f?q=80&w=1964&auto=format&fit=crop" 
-                        alt="Artisan at work" 
+                    <img
+                        src="https://unsplash.com/photos/swirling-dark-trees-with-distant-lights-at-dusk-hCA4TCLW_60"
+                        alt="Artisan at work"
                         className="w-full h-full object-cover"
                     />
                 </div>

@@ -24,8 +24,6 @@ function Footer() {
                         <ul className="flex flex-col gap-3 text-[13px] text-[#222]">
                             <li><Link className="hover:underline">About Orchestyle</Link></li>
                             <li><Link className="hover:underline">Sustainability</Link></li>
-                            <li><Link className="hover:underline">Careers</Link></li>
-                            <li><Link className="hover:underline">Press</Link></li>
                         </ul>
                     </div>
 
@@ -44,14 +42,6 @@ function Footer() {
                 {/* Newsletter & Socials */}
                 <div className="w-full md:w-[350px] flex flex-col pt-4 md:pt-0 border-t md:border-t-0 border-gray-300 md:border-l md:pl-8">
 
-                    <h4 className="font-bold mb-4 text-[#222]">JOIN OUR NEWSLETTER</h4>
-                    <p className="text-[13px] text-[#222] mb-4">
-                        Become a member and get 10% off your first purchase!
-                    </p>
-                    <div className="flex mb-6 border-b border-[#222] pb-1">
-                        <input type="email" placeholder="Your email address" className="w-full bg-transparent outline-none text-[13px]" />
-                        <button><FiArrowRight /></button>
-                    </div>
 
                     <div className="flex gap-6 text-[22px] text-[#222]">
                         <a href="#" className="hover:text-hm-red transition-colors"><FiInstagram /></a>
@@ -66,7 +56,7 @@ function Footer() {
                 <p className="text-[11px] text-[#444] leading-relaxed max-w-xl mx-auto mb-6">
                     The content of this site is copyright-protected and is the property of Orchestyle OS. Orchestyle's business concept is to offer fashion and quality at the best price in a sustainable way.
                 </p>
-                <div className="text-[34px] font-bold tracking-tighter text-hm-red mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                <div className="text-[42px] text-[#C19B4C] leading-none" style={{ fontFamily: '"Fleur De Leah", cursive' }}>
                     Orchestyle
                 </div>
                 <p className="text-[11px] font-bold text-[#666]">Nigeria</p>
