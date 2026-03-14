@@ -7,15 +7,18 @@ import { useAuth } from "../../hooks/useAuth"
 
 function Navbar() {
     const [isSearchOpen, setIsSearchOpen] = useState(false)
+    const [searchValue, setSearchValue] = useState("")
     const { cartCount } = useCart();
     const { wishlistItems } = useWishlist();
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    const handleSearch = (e) => {
-        if (e.key === 'Enter') {
-            navigate(`/shop?search=${e.target.value}`);
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        if (searchValue.trim()) {
+            navigate(`/shop?search=${encodeURIComponent(searchValue.trim())}`);
             setIsSearchOpen(false);
+            setSearchValue("");
         }
     }
 
@@ -53,13 +56,16 @@ function Navbar() {
                     {/* Search Icon / Toggle */}
                     <div className="relative flex items-center justify-end">
                         {isSearchOpen && (
-                            <input
-                                type="text"
-                                placeholder="Search products"
-                                onKeyDown={handleSearch}
-                                className="w-[180px] border-b border-[#222] outline-none pb-1 pr-6 text-[13px] bg-transparent text-[#666] mr-2 transition-all duration-300 animate-fade-in"
-                                autoFocus
-                            />
+                            <form onSubmit={handleSearchSubmit} className="flex items-center">
+                                <input
+                                    type="search"
+                                    placeholder="Search products"
+                                    value={searchValue}
+                                    onChange={(e) => setSearchValue(e.target.value)}
+                                    className="w-[180px] border-b border-[#222] outline-none pb-1 pr-6 text-[13px] bg-transparent text-[#666] mr-2 transition-all duration-300 animate-fade-in"
+                                    autoFocus
+                                />
+                            </form>
                         )}
                         <FiSearch
                             className={`text-[20px] cursor-pointer hover:text-[#C19B4C] transition-colors ${isSearchOpen ? 'absolute right-0 top-1/2 -translate-y-1/2 text-lg' : ''}`}
@@ -121,17 +127,17 @@ function Navbar() {
                     </Link>
                 </div>
             </div>
-            {/* Mobile Search Input Overlay (Conditional) */}
             {isSearchOpen && (
-                <div className="lg:hidden p-3 border-b bg-gray-50 flex justify-center animate-fade-in">
+                <form onSubmit={handleSearchSubmit} className="lg:hidden p-3 border-b bg-gray-50 flex justify-center animate-fade-in">
                     <input
-                        type="text"
+                        type="search"
                         placeholder="Search products..."
-                        onKeyDown={handleSearch}
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         className="w-full max-w-sm border-b border-[#222] outline-none pb-1 bg-transparent text-sm focus:border-[#C19B4C]"
                         autoFocus
                     />
-                </div>
+                </form>
             )}
         </header>
     )

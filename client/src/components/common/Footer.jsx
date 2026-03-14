@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiArrowRight } from "react-icons/fi"
+import { FaInstagram, FaTiktok, FaFacebook, FaWhatsapp } from "react-icons/fa6"
 
 function Footer() {
     return (
@@ -44,10 +44,10 @@ function Footer() {
 
 
                     <div className="flex gap-6 text-[22px] text-[#222]">
-                        <a href="#" className="hover:text-hm-red transition-colors"><FiInstagram /></a>
-                        <a href="#" className="hover:text-hm-red transition-colors"><FiYoutube /></a>
-                        <a href="#" className="hover:text-hm-red transition-colors"><FiFacebook /></a>
-                        <a href="#" className="hover:text-hm-red transition-colors"><FiTwitter /></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-hm-red transition-colors"><FaInstagram /></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-hm-red transition-colors"><FaTiktok /></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-hm-red transition-colors"><FaFacebook /></a>
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="hover:text-hm-red transition-colors"><FaWhatsapp /></a>
                     </div>
                 </div>
             </div>

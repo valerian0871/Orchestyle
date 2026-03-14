@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom"
 import AppRoutes from "./routes/AppRoutes"
 import MainLayout from "./layouts/MainLayout"
+import ScrollToTop from "./components/common/ScrollToTop"
 
 import { AuthProvider } from "./context/AuthContext"
 import { CartProvider } from "./context/CartContext"
@@ -12,6 +13,7 @@ function App() {
       <CartProvider>
         <WishlistProvider>
           <BrowserRouter>
+            <ScrollToTop />
             <MainLayout>
               <AppRoutes />
             </MainLayout>
